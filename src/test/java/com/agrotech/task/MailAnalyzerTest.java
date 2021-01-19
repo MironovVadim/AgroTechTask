@@ -45,6 +45,17 @@ public class MailAnalyzerTest {
 
         Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void whenOneUsersInThenOneOut() {
+        String testData = "user5 -> xyz@pisem.net\n";
+        System.setIn(new ByteArrayInputStream(testData.getBytes()));
+        mailAnalyzer.getUniqueUserMails().forEach(System.out::println);
+
+        String expected = "user5 -> xyz@pisem.net\n";
+        String actual = testOut.toString();
+
+        Assert.assertEquals(expected, actual);
+    }
 
     @Test
     public void whenTwoUsersInThenTwoOut() {
